@@ -7,7 +7,14 @@ const nav = (props) => {
     return (
         <nav id="nav"> 
             <ul id="list-nav" className="nav nav-pills nav-fill">
-                {props.displays.map(display => <NavItem id={display.id} label={display.label}/>)}
+                {props.displays.map(display => {
+                    if (display.active){
+                        return <NavItem click={props.switchDisplayHandler.bind(this, display.id)} id={display.id} label={display.label} activeClass="active" />
+                    } else {
+                        return <NavItem click={props.switchDisplayHandler.bind(this, display.id)} id={display.id} label={display.label} activeClass="" />
+                    }
+                }
+                )}
             </ul>
         </nav> 
     )
