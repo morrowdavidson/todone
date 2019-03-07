@@ -3,7 +3,7 @@ import './Nav.scss';
 
 const nav = (props) => {
     return (
-    <nav> 
+    <nav id="nav"> 
         <ul id="list-nav" className="nav nav-pills nav-fill">
         <li className="nav-item">
             <a className="nav-link" id="today-nav" href="#today">Today</a>
