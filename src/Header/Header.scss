@@ -1,0 +1,25 @@
+@import "../App.scss";
+
+#header h1 {
+    font-size: 30px;
+    font-weight: lighter;
+    color: $grey;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#header p {
+    font-size: 12px;
+    font-weight: lighter;
+    color: $grey;
+    margin-top: -5px;
+    padding-top: 0;
+}
+
+#logo_tag {
+    background-image: url('todone_logo.svg');
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-left: 55px;
+    padding-bottom: 25px;
+}

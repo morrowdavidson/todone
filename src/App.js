@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Header from './Header/Header'
+import Nav from './Nav/Nav';
 
 class App extends Component {
+  state = {
+    display: [
+      'today',
+      'thisWeek',
+      'allTasks'
+    ]
+  }
+
   render() {
     return (
       <div id="page">
         <div id="app-container">
-          <div id="header">
-            <div id="logo_tag">
-              <h1>todone</h1>
-              <p>A simple todo app.</p>
-            </div>
-            <i className="gear-icon"></i>
-          </div>
+          <Header />
+          <Nav />
         </div>
       </div>
     );

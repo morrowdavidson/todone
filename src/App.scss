@@ -3,6 +3,8 @@ $week       :#49AD9A;
 $all        :#026C73;
 $grey       :#707070;
 $lightGrey  :#979797;
+$dark       :#979797;
+
 
 #page {
     background-image: linear-gradient(to bottom,$today,$week);
@@ -22,30 +24,6 @@ $lightGrey  :#979797;
     padding-top: 50px;
     
 };  
-
-#header h1 {
-    font-size: 30px;
-    font-weight: lighter;
-    color: $grey;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-#header p {
-    font-size: 12px;
-    font-weight: lighter;
-    color: $grey;
-    margin-top: -5px;
-    padding-top: 0;
-}
-
-#logo_tag {
-    background-image: url('todone_logo.svg');
-    display: inline-block;
-    background-repeat: no-repeat;
-    padding-left: 55px;
-    padding-bottom: 25px;
-}
 
 //button style helper
 button {
