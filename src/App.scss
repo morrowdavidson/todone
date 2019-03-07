@@ -1,0 +1,76 @@
+$today      :#E674A2;
+$week       :#49AD9A;
+$all        :#026C73;
+$grey       :#707070;
+$lightGrey  :#979797;
+
+#page {
+    background-image: linear-gradient(to bottom,$today,$week);
+    height: 100%;
+    min-height: 100vh;
+    padding-top: 30px;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    padding-bottom: 30px;
+};
+
+#app-container {
+    max-width: 500px;
+    margin: auto;
+    background-color: white;
+    padding: 45px;
+    padding-top: 50px;
+    
+};  
+
+#header h1 {
+    font-size: 30px;
+    font-weight: lighter;
+    color: $grey;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#header p {
+    font-size: 12px;
+    font-weight: lighter;
+    color: $grey;
+    margin-top: -5px;
+    padding-top: 0;
+}
+
+#logo_tag {
+    background-image: url('todone_logo.svg');
+    display: inline-block;
+    background-repeat: no-repeat;
+    padding-left: 55px;
+    padding-bottom: 25px;
+}
+
+//button style helper
+button {
+    display: inline-block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    background:none;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover,
+button:focus {
+    background: none;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
