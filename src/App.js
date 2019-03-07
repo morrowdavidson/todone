@@ -6,39 +6,17 @@ import Nav from './Nav/Nav';
 class App extends Component {
   state = {
     displays: [
-      { label: 'Today', id: "today", active: true },
-      { label: 'This Week', id: "week", active: false },
-      { label: 'All Tasks', id: "all", active: false }
-    ]
+      { label: 'Today', id: 'today' },
+      { label: 'This Week', id: 'week' },
+      { label: 'All Tasks', id: 'all' }
+    ],
+    activeDisplay : 'today'
   }
 
-  switchDisplayHandler = (displayId) => {
-    if (displayId === "today"){
+  switchDisplayHandler = (displayId) => {  
       this.setState({
-        displays: [
-          { label: 'Today', id: "today", active: true },
-          { label: 'This Week', id: "week", active: false },
-          { label: 'All Tasks', id: "all", active: false }
-        ]
+       activeDisplay : displayId
       })
-    } else if (displayId === "week"){
-      this.setState({
-        displays: [
-          { label: 'Today', id: "today", active: false },
-          { label: 'This Week', id: "week", active: true },
-          { label: 'All Tasks', id: "all", active: false }
-        ]
-      })
-    } else {   
-      this.setState({
-      displays: [
-        { label: 'Today', id: "today", active: false },
-        { label: 'This Week', id: "week", active: false },
-        { label: 'All Tasks', id: "all", active: true }
-      ]
-    })
-
-    }
   }
 
   render() {
@@ -49,6 +27,7 @@ class App extends Component {
           <Nav 
           displays = {this.state.displays}
           switchDisplayHandler = {this.switchDisplayHandler}
+          activeDisplay = {this.state.activeDisplay}
           />
         </div>
       </div>

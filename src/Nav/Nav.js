@@ -8,7 +8,7 @@ const nav = (props) => {
         <nav id="nav"> 
             <ul id="list-nav" className="nav nav-pills nav-fill">
                 {props.displays.map((display, i) => {
-                    if (display.active){
+                    if (display.id === props.activeDisplay){
                         return <NavItem key={i} click={props.switchDisplayHandler.bind(this, display.id)} id={display.id} label={display.label} activeClass="active" />
                     } else {
                         return <NavItem key={i} click={props.switchDisplayHandler.bind(this, display.id)} id={display.id} label={display.label} activeClass="" />
