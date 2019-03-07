@@ -5,10 +5,10 @@ import Nav from './Nav/Nav';
 
 class App extends Component {
   state = {
-    display: [
-      'today',
-      'thisWeek',
-      'allTasks'
+    displays: [
+      { label: 'Today', id: "today" },
+      { label: 'This Week', id: "week" },
+      { label: 'All Tasks', id: "all"}
     ]
   }
 
@@ -17,7 +17,9 @@ class App extends Component {
       <div id="page">
         <div id="app-container">
           <Header />
-          <Nav />
+          <Nav 
+          displays = {this.state.displays}
+          />
         </div>
       </div>
     );
