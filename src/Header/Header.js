@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.scss';
 
-const nav = (props) => {
+const header = (props) => {
     return (
         <div id="header">
             <div id="logo_tag">
@@ -13,4 +13,4 @@ const nav = (props) => {
     )
 };
 
-export default nav;
+export default header;

@@ -18,14 +18,14 @@
     border:0;
 };
 
-#today-nav.active{
+#todayNav.active{
     background: $today;
 };
 
-#this-week-nav.active{
+#weekNav.active{
     background: $week;
 };
 
-#all-tasks-nav.active{
+#allNav.active{
     background: $all;
 };
