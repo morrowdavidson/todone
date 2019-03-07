@@ -4,24 +4,24 @@ import Header from './Header/Header'
 import Nav from './Nav/Nav';
 import TodoList from './TodoList/TodoList';
  
-
-let currentDisplay = 'Today';
+let loadDisplay = 'Today';
 
 (() => {
   if (window.location.hash) {
     let displayHash = window.location.hash;
-    currentDisplay = displayHash.replace('#','');
+    loadDisplay = displayHash.replace('#','');
 }}
 )();
 
 class App extends Component {
+  currentDisplay = 'Today'
   state = {
     displays: [
       { label: 'Today', id: 'today' },
       { label: 'This Week', id: 'week' },
       { label: 'All Tasks', id: 'all' }
     ],
-    activeDisplay: currentDisplay,
+    activeDisplay: loadDisplay,
   }
   
   switchDisplayHandler = (displayId) => {  

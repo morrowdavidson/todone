@@ -5,10 +5,10 @@ import TodoItem from './TodoItem';
 
 const todoList = (props) => {
     return (
-        <ul class="list-group" id="all-tasks-list">
+        <ul className="list-group" id="all-tasks-list">
             <TodoItem />
-            <li id="all-tasks-list-input" className="list-group-item add-task-input d-none"><button class="fas fa-plus"></button><input type="text" /></li>
-            <li id="all-tasks-list-button" className="list-group-item add-task-button"><button class="fas fa-plus"></button> Add a task</li>
+            <li id="all-tasks-list-input" className="list-group-item add-task-input d-none"><button className="fas fa-plus"></button><input type="text" /></li>
+            <li id="all-tasks-list-button" className="list-group-item add-task-button"><button className="fas fa-plus"></button> Add a task</li>
         </ul>
     )
 
