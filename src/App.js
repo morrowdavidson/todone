@@ -31,6 +31,36 @@ class App extends Component {
   }
   render() {
     
+    let lists = null;
+    let todayList = <TodoList id='todayList' buttonLabel='Add task for today'/>;
+    let weekList = <TodoList id='weekList' buttonLabel='Add task for this week'/>;
+    let allList = <TodoList id='allList' buttonLabel='Add task'/>
+
+
+    if (this.state.activeDisplay === "today") {
+      lists = (
+        <div>
+          {todayList}
+        </div>
+
+      )
+    } else if (this.state.activeDisplay === "week"){
+      lists = (
+        <div>
+          {weekList}
+          {todayList}
+        </div>
+      )
+    } else {
+      lists = (
+        <div>
+          {allList}
+          {weekList}
+          {todayList}
+        </div>
+      )
+    }
+    
     return ( 
 
       <div id="page">
@@ -41,7 +71,7 @@ class App extends Component {
             switchDisplayHandler = {this.switchDisplayHandler}
             activeDisplay = {this.state.activeDisplay}
           />
-          <TodoList />
+          {lists}
         </div>
       </div>
     );
