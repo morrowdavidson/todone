@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './Header/Header'
 import Nav from './Nav/Nav';
-import TodoList from './TodoList/TodoList';
+import TodayList from './TodoList/TodayList';
+import WeekList from './TodoList/WeekList';
+import AllList from './TodoList/AllList';
+
  
 let loadDisplay = 'today';
 
@@ -31,31 +34,30 @@ class App extends Component {
   render() {
     
     let lists = null;
-    let todayList = <TodoList id='todayList' buttonLabel='Add task for today'/>;
-    let weekList = <TodoList id='weekList' buttonLabel='Add task for this week'/>;
-    let allList = <TodoList id='allList' buttonLabel='Add task'/>
+    let todayList = <TodayList id='todayList' buttonLabel='Add task for today'/>;
+    let weekList = <WeekList id='weekList' buttonLabel='Add task for this week'/>;
+    let allList = <AllList id='allList' buttonLabel='Add task'/>
 
 
     if (this.state.activeDisplay === "today") {
       lists = (
         <div>
-          {todayList}
+          <TodayList />
         </div>
-
       )
     } else if (this.state.activeDisplay === "week"){
       lists = (
         <div>
-          {weekList}
-          {todayList}
+          <WeekList />
+          <TodayList />
         </div>
       )
     } else {
       lists = (
         <div>
-          {allList}
-          {weekList}
-          {todayList}
+          <AllList />
+          <WeekList />
+          <TodayList />
         </div>
       )
     }
