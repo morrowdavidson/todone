@@ -15,11 +15,11 @@ class WeekList extends Component {
 
   inputToggleHandler = () => {
     if (!this.state.enteringInput) {
-        this.setState({
-            enteringInput : true
-        })
+      this.setState({
+        enteringInput : true
+      })
     } else {this.setState({
-        enteringInput : false
+      enteringInput : false
     })
     }
   }
@@ -28,7 +28,7 @@ class WeekList extends Component {
     let buttonOrInput = null;
 
     if (this.state.enteringInput) {
-      buttonOrInput = <li id={this.state.id + "Input"} className="list-group-item add-task-input"><button onClick={this.inputToggleHandler} className="fas fa-plus"></button><input onBlur={this.inputToggleHandler} id={this.state.id + "InputField"} type="text" /></li>
+      buttonOrInput = <li id={this.state.id + "Input"} className="list-group-item add-task-input"><button onClick={this.inputToggleHandler} className="fas fa-plus"></button><input autoFocus onBlur={this.inputToggleHandler} id={this.state.id + "InputField"} type="text" /></li>
     } else {
       buttonOrInput = <li onClick={this.inputToggleHandler} id={this.state.id + "Button"} className="list-group-item add-task-button"><button className="fas fa-plus"></button>{this.state.buttonLabel}</li>
     }
