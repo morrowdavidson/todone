@@ -4,7 +4,7 @@ import Header from './Header/Header'
 import Nav from './Nav/Nav';
 import TodoList from './TodoList/TodoList';
  
-let loadDisplay = 'Today';
+let loadDisplay = 'today';
 
 (() => {
   if (window.location.hash) {
@@ -14,7 +14,6 @@ let loadDisplay = 'Today';
 )();
 
 class App extends Component {
-  currentDisplay = 'Today'
   state = {
     displays: [
       { label: 'Today', id: 'today' },
