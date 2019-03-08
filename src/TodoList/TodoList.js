@@ -3,7 +3,7 @@ import './TodoList.scss';
 import TodoItem from './TodoItem';
 
 
-class AllList extends Component {
+class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,4 +66,4 @@ class AllList extends Component {
   }
 };
 
-export default AllList;
+export default TodoList;

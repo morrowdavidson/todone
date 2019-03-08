@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './Header/Header'
 import Nav from './Nav/Nav';
-import TodayList from './TodoList/TodayList';
-import WeekList from './TodoList/WeekList';
-import AllList from './TodoList/AllList';
+import TodoList from './TodoList/TodoList';
 
  
 let loadDisplay = 'today';
@@ -33,31 +31,6 @@ class App extends Component {
   }
   render() {
     
-    let lists = null;
-
-    if (this.state.activeDisplay === "today") {
-      lists = (
-        <div>
-          <TodayList />
-        </div>
-      )
-    } else if (this.state.activeDisplay === "week"){
-      lists = (
-        <div>
-          <WeekList />
-          <TodayList />
-        </div>
-      )
-    } else {
-      lists = (
-        <div>
-          <AllList />
-          <WeekList />
-          <TodayList />
-        </div>
-      )
-    }
-    
     return ( 
 
       <div id="page">
@@ -68,7 +41,7 @@ class App extends Component {
             switchDisplayHandler = {this.switchDisplayHandler}
             activeDisplay = {this.state.activeDisplay}
           />
-          <AllList 
+          <TodoList 
             activeDisplay = {this.state.activeDisplay}
           />
         </div>
