@@ -23,7 +23,7 @@ class App extends Component {
       { label: 'This Week', id: 'week' },
       { label: 'All Tasks', id: 'all' }
     ],
-    activeDisplay: loadDisplay,
+    activeDisplay: loadDisplay, 
   }
   
   switchDisplayHandler = (displayId) => {  
@@ -34,10 +34,6 @@ class App extends Component {
   render() {
     
     let lists = null;
-    let todayList = <TodayList id='todayList' buttonLabel='Add task for today'/>;
-    let weekList = <WeekList id='weekList' buttonLabel='Add task for this week'/>;
-    let allList = <AllList id='allList' buttonLabel='Add task'/>
-
 
     if (this.state.activeDisplay === "today") {
       lists = (
@@ -72,7 +68,9 @@ class App extends Component {
             switchDisplayHandler = {this.switchDisplayHandler}
             activeDisplay = {this.state.activeDisplay}
           />
-          {lists}
+          <AllList 
+            activeDisplay = {this.state.activeDisplay}
+          />
         </div>
       </div>
     );

@@ -9,35 +9,57 @@ class AllList extends Component {
     this.state = {
       enteringInput: false,
       id: 'allList',
-      buttonLabel: 'Add task'
+      buttonLabel: 'Add task',
+      todayList: [
+        {content: 'this is a test for today'}
+      ],
+      thisWeekList: [
+        {content: 'this is a test for this week'}
+      ],
+      allList: [
+        {content: 'this is a test for all'}
+      ]     
     };
   }
 
-  inputToggleHandler = () => {
+  inputToggleHandler = (evt) => {
     if (!this.state.enteringInput) {
         this.setState({
-            enteringInput : true
+          enteringInput : true
         })
-    } else {this.setState({
-        enteringInput : false
-    })
+    } else {
+      if (evt.target.value !== ''){
+        this.setState({
+          enteringInput : false,
+          allList : [
+            ...this.state.allList,
+            {content: evt.target.value}
+          ]
+        })
+      } else {
+      this.setState({
+        enteringInput : false,
+      })
+    }
     }
   }
 
   render(){
-console.log(this.state.buttonLabel);
-
     let buttonOrInput = null;
 
     if (this.state.enteringInput) {
-        buttonOrInput = <li id={this.state.id + "Input"} className="list-group-item add-task-input"><button onClick={this.inputToggleHandler} className="fas fa-plus"></button><input autoFocus onBlur={this.inputToggleHandler} id={this.state.id + "InputField"} type="text" /></li>
+        buttonOrInput = <li id={this.state.id + "Input"} className="list-group-item add-task-input"><button onClick={evt => this.inputToggleHandler(evt)} className="fas fa-plus"></button><input autoFocus onBlur={evt => this.inputToggleHandler(evt)} id={this.state.id + "InputField"} type="text" /></li>
     } else {
         buttonOrInput = <li onClick={this.inputToggleHandler} id={this.state.id + "Button"} className="list-group-item add-task-button"><button className="fas fa-plus"></button>{this.state.buttonLabel}</li>
     }
 
+    let allItems = this.state.allList.map(listItem => {
+      return <TodoItem content={listItem.content}/>
+    }) 
+
     return (
       <ul className="list-group" id={this.state.id}>
-        <TodoItem />
+        {allItems}
         {buttonOrInput}
       </ul>
     )

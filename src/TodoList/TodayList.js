@@ -9,7 +9,10 @@ class TodayList extends Component {
     this.state = {
       enteringInput: false,
       id: 'todayList',
-      buttonLabel: 'Add task for today'
+      buttonLabel: 'Add task for today',
+      listItems : [
+        {content: 'this is a test'}
+      ]
     };
   }
 
