@@ -118,13 +118,37 @@ class TodoList extends Component {
 
   render(){
     let allItems = this.state.allList.map((listItem) => {
-      return <TodoItem checkedToggle={this.checkedToggle} checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} id="allList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
+      return <TodoItem 
+              checkedToggle={this.checkedToggle} 
+              checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} 
+              id="allList" 
+              key={listItem.key} 
+              keyValue={listItem.key} 
+              content={listItem.content} 
+              removeItem={this.removeItem}
+              quickLinks={<div className="quicklinks"><a href='#week'>Move to this week</a></div>}
+              />
     }) 
     let weekItems = this.state.weekList.map((listItem) => {
-      return <TodoItem checkedToggle={this.checkedToggle} checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} id="weekList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
+      return <TodoItem 
+              checkedToggle={this.checkedToggle} 
+              checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} 
+              id="weekList" key={listItem.key} 
+              keyValue={listItem.key} 
+              content={listItem.content} 
+              removeItem={this.removeItem}
+              quickLinks={<div className="quicklinks"><a href='#today'>Move to today</a></div>}
+              />
     }) 
     let todayItems = this.state.todayList.map((listItem) => {
-      return <TodoItem checkedToggle={this.checkedToggle} checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} id="todayList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
+      return <TodoItem 
+              checkedToggle={this.checkedToggle} 
+              checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} 
+              id="todayList" key={listItem.key} 
+              keyValue={listItem.key} 
+              content={listItem.content} 
+              removeItem={this.removeItem}
+              />
     }) 
     
     let allButton = 
