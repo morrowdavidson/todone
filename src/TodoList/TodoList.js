@@ -10,15 +10,25 @@ class TodoList extends Component {
     this.state = {
       enteringInput: false,
       buttonLabel: 'Add task',
+      keyCounter: 4,
       todayList: [
-        {content: 'this is a test for today'}
+        {
+          content: 'this is a test for today',
+          key: 1
+        }
       ],
       weekList: [
-        {content: 'this is a test for this week'}
+        {
+          content: 'this is a test for this week',
+          key: 2
+        }
       ],
       allList: [
-        {content: 'this is a test for all'}
-      ]     
+        {
+          content: 'this is a test for all',
+          key: 3
+        }
+      ],
     };
   }
 
@@ -30,11 +40,18 @@ class TodoList extends Component {
     } else if (event.target.value !== '') {
       let inputId = event.target.id;
       let listId = inputId.replace('InputField', '');
+      let currentKeyCount = this.state.keyCounter;
+      let currentState = this.state[listId];
+
       this.setState({
+        keyCounter : ++currentKeyCount,
         enteringInput : false,
         [listId] : [
-          ...this.state[listId],
-          {content: event.target.value}
+          ...currentState,
+          {
+            content: event.target.value,
+            key: this.state.keyCounter
+          }
         ]
       })
       if (replay){
@@ -49,15 +66,29 @@ class TodoList extends Component {
     }
   }
   
+  removeItem = (event) => {
+    let listId = event.target.title;
+    let key = parseInt(event.target.id);
+    let currentState = this.state[listId];
+    let newState = currentState.filter((listState)=>{
+      return listState.key !== key
+    })
+
+    this.setState({
+      [listId] : newState
+    })
+
+  }
+
   render(){
-    let allItems = this.state.allList.map((listItem, i) => {
-      return <TodoItem  key={i} content={listItem.content}/>
+    let allItems = this.state.allList.map((listItem) => {
+      return <TodoItem id="allList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
     }) 
-    let weekItems = this.state.weekList.map((listItem, i) => {
-      return <TodoItem key={i} content={listItem.content}/>
+    let weekItems = this.state.weekList.map((listItem) => {
+      return <TodoItem id="weekList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
     }) 
-    let todayItems = this.state.todayList.map((listItem, i) => {
-      return <TodoItem key={i} content={listItem.content}/>
+    let todayItems = this.state.todayList.map((listItem) => {
+      return <TodoItem id="todayList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
     }) 
     
     let allButton = 
