@@ -22,19 +22,19 @@ class TodoList extends Component {
     };
   }
 
-  inputToggleHandler = (evt) => {
+  inputToggleHandler = (event) => {
     if (!this.state.enteringInput) {
       this.setState({
         enteringInput : true
       })
-    } else if (evt.target.value !== '') {
-      let inputId = evt.target.id;
+    } else if (event.target.value !== '') {
+      let inputId = event.target.id;
       let listId = inputId.replace('InputField', '');
       this.setState({
         enteringInput : false,
         [listId] : [
           ...this.state[listId],
-          {content: evt.target.value}
+          {content: event.target.value}
         ]
       })
     } else {
@@ -44,7 +44,6 @@ class TodoList extends Component {
     }
   }
   
-
   render(){
     let allItems = this.state.allList.map(listItem => {
       return <TodoItem content={listItem.content}/>
