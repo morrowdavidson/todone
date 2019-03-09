@@ -11,15 +11,15 @@
     padding-left:30px;
 };
 
-#todayList i{
+#todayList i, #todayList button, #todayList .add-task-button {
     color: $today;
 };
 
-#weekList i{
+#weekList i, #weekList button, #weekList .add-task-button{
     color: $week;
 };
 
-#allList i{
+#allList i, #allList button, #allList .add-task-button{
     color: $all;
 };
 
@@ -31,4 +31,15 @@ li i {
     font-size: 1.75em;
     position: relative;
     top: .15em;
+}
+.add-task-button button, .add-task-input button {
+    padding: .5em;
+}
+.add-task-input input[type=text] {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #707070;
+    color: $darkGrey;
+    padding: 0 .5em;
+    width: 75%;
 }
