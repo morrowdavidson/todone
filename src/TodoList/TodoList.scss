@@ -8,7 +8,7 @@
 .list-group {
     padding-top:20px;
     padding-right:30px;
-    padding-left:30px;
+    padding-left:60px;
 };
 
 #todayList i, #todayList button, #todayList .add-task-button {
@@ -23,17 +23,18 @@
     color: $all;
 };
 
-i {
-    padding-right: .2em;
-}
+
 
 li i {
     font-size: 1.75em;
     position: relative;
     top: .15em;
+    left: -1.25em;
 }
 .add-task-button button, .add-task-input button {
     padding: .5em;
+    margin-left: -2.35em;
+
 }
 .add-task-input input[type=text] {
     border-style: solid;
@@ -43,3 +44,8 @@ li i {
     padding: 0 .5em;
     width: 75%;
 }
+
+.list-group-item span{
+    margin-left: -2em;
+}
+
