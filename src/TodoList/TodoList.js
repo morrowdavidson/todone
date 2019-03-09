@@ -22,7 +22,7 @@ class TodoList extends Component {
     };
   }
 
-  inputToggleHandler = (event) => {
+  inputToggleHandler = (event, replay) => {
     if (!this.state.enteringInput) {
       this.setState({
         enteringInput : true
@@ -37,6 +37,11 @@ class TodoList extends Component {
           {content: event.target.value}
         ]
       })
+      if (replay){
+        this.setState({
+          enteringInput : true,
+        })
+      }
     } else {
     this.setState({
       enteringInput : false,

@@ -8,7 +8,11 @@ const addItemButton = (props) => {
       <li id={props.id + "Input"} className="list-group-item add-task-input">
         <button onClick={props.inputToggleHandler} className="fas fa-plus"></button>
         <input  autoFocus 
-                onKeyDown={(event) => {if (event.key === 'Enter'){props.inputToggleHandler(event)}}} 
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter'){
+                    props.inputToggleHandler(event, "replay");
+                    event.target.value = '';
+                }}} 
                 onBlur={props.inputToggleHandler} id={props.id + "InputField"} type="text" />
       </li>
   }
