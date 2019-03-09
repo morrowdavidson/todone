@@ -35,12 +35,12 @@ class TodoList extends Component {
           {content: evt.target.value}
         ],
         weekList : [
-          ...this.state.weekList,
-          {content: evt.target.value}
+          {content: evt.target.value},
+          ...this.state.weekList
         ],
         allList : [
-          ...this.state.allList,
-          {content: evt.target.value}
+          {content: evt.target.value},
+          ...this.state.allList
         ]
       })
     } else {
