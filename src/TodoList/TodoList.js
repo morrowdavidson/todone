@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './TodoList.scss';
 import TodoItem from './TodoItem';
+import AddItemButton from './AddItemButton';
 
 
 class TodoList extends Component {
@@ -13,7 +14,7 @@ class TodoList extends Component {
       todayList: [
         {content: 'this is a test for today'}
       ],
-      thisWeekList: [
+      weekList: [
         {content: 'this is a test for this week'}
       ],
       allList: [
@@ -45,22 +46,36 @@ class TodoList extends Component {
   }
 
   render(){
-    let buttonOrInput = null;
-
-    if (this.state.enteringInput) {
-        buttonOrInput = <li id={this.state.id + "Input"} className="list-group-item add-task-input"><button onClick={evt => this.inputToggleHandler(evt)} className="fas fa-plus"></button><input autoFocus onBlur={evt => this.inputToggleHandler(evt)} id={this.state.id + "InputField"} type="text" /></li>
-    } else {
-        buttonOrInput = <li onClick={this.inputToggleHandler} id={this.state.id + "Button"} className="list-group-item add-task-button"><button className="fas fa-plus"></button>{this.state.buttonLabel}</li>
-    }
-
     let allItems = this.state.allList.map(listItem => {
+      return <TodoItem content={listItem.content}/>
+    }) 
+    let weekItems = this.state.weekList.map(listItem => {
+      return <TodoItem content={listItem.content}/>
+    }) 
+    let todayItems = this.state.todayList.map(listItem => {
       return <TodoItem content={listItem.content}/>
     }) 
 
     return (
       <ul className="list-group" id={this.state.id}>
         {allItems}
-        {buttonOrInput}
+        <AddItemButton 
+          id = 'allList' 
+          inputToggleHandler = {this.inputToggleHandler} 
+          enteringInput = {this.state.enteringInput}
+          buttonLabel = 'Add a task'/>
+        {weekItems}
+        <AddItemButton 
+          id = 'weekList' 
+          inputToggleHandler = {this.inputToggleHandler} 
+          enteringInput = {this.state.enteringInput}
+          buttonLabel = 'Add a task for this week'/>
+        {todayItems}
+        <AddItemButton 
+          id = 'todayList' 
+          inputToggleHandler = {this.inputToggleHandler} 
+          enteringInput = {this.state.enteringInput}
+          buttonLabel = 'Add a task for today'/>
       </ul>
     )
   }
