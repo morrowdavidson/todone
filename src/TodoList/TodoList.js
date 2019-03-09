@@ -9,7 +9,6 @@ class TodoList extends Component {
     super(props);
     this.state = {
       enteringInput: false,
-      id: 'allList',
       buttonLabel: 'Add task',
       todayList: [
         {content: 'this is a test for today'}
@@ -25,25 +24,32 @@ class TodoList extends Component {
 
   inputToggleHandler = (evt) => {
     if (!this.state.enteringInput) {
-        this.setState({
-          enteringInput : true
-        })
-    } else {
-      if (evt.target.value !== ''){
-        this.setState({
-          enteringInput : false,
-          allList : [
-            ...this.state.allList,
-            {content: evt.target.value}
-          ]
-        })
-      } else {
+      this.setState({
+        enteringInput : true
+      })
+    } else if (evt.target.value !== '') {
       this.setState({
         enteringInput : false,
+        todayList : [
+          ...this.state.todayList,
+          {content: evt.target.value}
+        ],
+        weekList : [
+          ...this.state.weekList,
+          {content: evt.target.value}
+        ],
+        allList : [
+          ...this.state.allList,
+          {content: evt.target.value}
+        ]
       })
-    }
+    } else {
+    this.setState({
+      enteringInput : false,
+    })
     }
   }
+  
 
   render(){
     let allItems = this.state.allList.map(listItem => {
@@ -55,28 +61,76 @@ class TodoList extends Component {
     let todayItems = this.state.todayList.map(listItem => {
       return <TodoItem content={listItem.content}/>
     }) 
+    
+    let allButton = 
+      <AddItemButton 
+      id = 'allList' 
+      inputToggleHandler = {this.inputToggleHandler} 
+      enteringInput = {this.state.enteringInput}
+      buttonLabel = 'Add a task'/>
+      
+    let weekButton = 
+      <AddItemButton 
+      id = 'weekList' 
+      inputToggleHandler = {this.inputToggleHandler} 
+      enteringInput = {this.state.enteringInput}
+      buttonLabel = 'Add a task'/>
+
+    let todayButton = 
+      <AddItemButton 
+      id = 'todayList' 
+      inputToggleHandler = {this.inputToggleHandler} 
+      enteringInput = {this.state.enteringInput}
+      buttonLabel = 'Add a task for today'/>
+    
+    allItems.push(allButton);
+    weekItems.push(weekButton);
+    todayItems.push(todayButton);
+
+    let allList =  
+      <div>
+        <ul className="list-group" id='allList'>
+          {allItems}
+        </ul>
+        <ul className="list-group" id='weekList'>
+          {weekItems}
+        </ul>
+        <ul className="list-group" id='todayList'>
+          {todayItems}
+        </ul>
+      </div>
+
+    let weekList =
+      <div>
+        <ul className="list-group" id='weekList'>
+          {weekItems}
+        </ul>
+        <ul className="list-group" id='todayList'>
+          {todayItems}
+        </ul>
+      </div>
+      
+    let todayList =
+      <div>
+        <ul className="list-group" id='todayList'>
+          {todayItems}
+        </ul>
+      </div>
+
+    let currentLists = allList;
+
+
+    if (this.props.activeDisplay === 'today'){
+      currentLists = todayList;
+    } else if (this.props.activeDisplay === 'week'){
+      currentLists = weekList;
+    } else {
+      currentLists = allList;
+    }
+
 
     return (
-      <ul className="list-group" id={this.state.id}>
-        {allItems}
-        <AddItemButton 
-          id = 'allList' 
-          inputToggleHandler = {this.inputToggleHandler} 
-          enteringInput = {this.state.enteringInput}
-          buttonLabel = 'Add a task'/>
-        {weekItems}
-        <AddItemButton 
-          id = 'weekList' 
-          inputToggleHandler = {this.inputToggleHandler} 
-          enteringInput = {this.state.enteringInput}
-          buttonLabel = 'Add a task for this week'/>
-        {todayItems}
-        <AddItemButton 
-          id = 'todayList' 
-          inputToggleHandler = {this.inputToggleHandler} 
-          enteringInput = {this.state.enteringInput}
-          buttonLabel = 'Add a task for today'/>
-      </ul>
+      currentLists
     )
   }
 };
