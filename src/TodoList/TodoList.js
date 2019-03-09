@@ -14,19 +14,22 @@ class TodoList extends Component {
       todayList: [
         {
           content: 'this is a test for today',
-          key: 1
+          key: 1,
+          isChecked: false,
         }
       ],
       weekList: [
         {
           content: 'this is a test for this week',
-          key: 2
+          key: 2,
+          isChecked: false,
         }
       ],
       allList: [
         {
           content: 'this is a test for all',
-          key: 3
+          key: 3,
+          isChecked: false,
         }
       ],
     };
@@ -50,7 +53,8 @@ class TodoList extends Component {
           ...currentState,
           {
             content: event.target.value,
-            key: this.state.keyCounter
+            key: this.state.keyCounter,
+            isChecked: false,
           }
         ]
       })
@@ -80,15 +84,47 @@ class TodoList extends Component {
 
   }
 
+  checkedToggle = (event) => {
+    let listId = event.target.title;
+    let key = parseInt(event.target.id);
+    let currentState = this.state[listId];
+
+    if(event.target.className === 'far fa-circle'){
+
+      let newState = currentState.map(listItem => {
+        if (listItem.key === key){
+          listItem.isChecked = true; 
+          return listItem;     
+        }     
+      return listItem;
+    })
+    this.setState({
+      [listId] : newState
+    })
+    } else {
+      let newState = currentState.map(listItem => {
+        if (listItem.key === key){
+          listItem.isChecked = false; 
+          return listItem;     
+        }     
+      return listItem;
+    })
+    this.setState({
+      [listId] : newState
+    })
+    }
+    
+  }
+
   render(){
     let allItems = this.state.allList.map((listItem) => {
-      return <TodoItem id="allList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
+      return <TodoItem checkedToggle={this.checkedToggle} checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} id="allList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
     }) 
     let weekItems = this.state.weekList.map((listItem) => {
-      return <TodoItem id="weekList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
+      return <TodoItem checkedToggle={this.checkedToggle} checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} id="weekList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
     }) 
     let todayItems = this.state.todayList.map((listItem) => {
-      return <TodoItem id="todayList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
+      return <TodoItem checkedToggle={this.checkedToggle} checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} id="todayList" key={listItem.key} keyValue={listItem.key} content={listItem.content} removeItem={this.removeItem}/>
     }) 
     
     let allButton = 
