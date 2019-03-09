@@ -28,19 +28,13 @@ class TodoList extends Component {
         enteringInput : true
       })
     } else if (evt.target.value !== '') {
+      let inputId = evt.target.id;
+      let listId = inputId.replace('InputField', '');
       this.setState({
         enteringInput : false,
-        todayList : [
-          ...this.state.todayList,
+        [listId] : [
+          ...this.state[listId],
           {content: evt.target.value}
-        ],
-        weekList : [
-          {content: evt.target.value},
-          ...this.state.weekList
-        ],
-        allList : [
-          {content: evt.target.value},
-          ...this.state.allList
         ]
       })
     } else {
@@ -74,7 +68,7 @@ class TodoList extends Component {
       id = 'weekList' 
       inputToggleHandler = {this.inputToggleHandler} 
       enteringInput = {this.state.enteringInput}
-      buttonLabel = 'Add a task'/>
+      buttonLabel = 'Add a task for this week'/>
 
     let todayButton = 
       <AddItemButton 
@@ -82,15 +76,12 @@ class TodoList extends Component {
       inputToggleHandler = {this.inputToggleHandler} 
       enteringInput = {this.state.enteringInput}
       buttonLabel = 'Add a task for today'/>
-    
-    allItems.push(allButton);
-    weekItems.push(weekButton);
-    todayItems.push(todayButton);
 
     let allList =  
       <div>
         <ul className="list-group" id='allList'>
           {allItems}
+          {allButton}
         </ul>
         <ul className="list-group" id='weekList'>
           {weekItems}
@@ -104,6 +95,7 @@ class TodoList extends Component {
       <div>
         <ul className="list-group" id='weekList'>
           {weekItems}
+          {weekButton}
         </ul>
         <ul className="list-group" id='todayList'>
           {todayItems}
@@ -114,6 +106,7 @@ class TodoList extends Component {
       <div>
         <ul className="list-group" id='todayList'>
           {todayItems}
+          {todayButton}
         </ul>
       </div>
 
