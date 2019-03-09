@@ -45,14 +45,14 @@ class TodoList extends Component {
   }
   
   render(){
-    let allItems = this.state.allList.map(listItem => {
-      return <TodoItem content={listItem.content}/>
+    let allItems = this.state.allList.map((listItem, i) => {
+      return <TodoItem  key={i} content={listItem.content}/>
     }) 
-    let weekItems = this.state.weekList.map(listItem => {
-      return <TodoItem content={listItem.content}/>
+    let weekItems = this.state.weekList.map((listItem, i) => {
+      return <TodoItem key={i} content={listItem.content}/>
     }) 
-    let todayItems = this.state.todayList.map(listItem => {
-      return <TodoItem content={listItem.content}/>
+    let todayItems = this.state.todayList.map((listItem, i) => {
+      return <TodoItem key={i} content={listItem.content}/>
     }) 
     
     let allButton = 
