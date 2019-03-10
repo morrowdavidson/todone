@@ -91,16 +91,17 @@ class TodoList extends Component {
 
     if(event.target.className === 'far fa-circle'){
 
-      let newState = currentState.map(listItem => {
-        if (listItem.key === key){
-          listItem.isChecked = true; 
-          return listItem;     
-        }     
+    let newState = currentState.map(listItem => {
+      if (listItem.key === key){
+        listItem.isChecked = true; 
+        return listItem;     
+      }     
       return listItem;
-    })
+    })   
     this.setState({
       [listId] : newState
     })
+    
     } else {
       let newState = currentState.map(listItem => {
         if (listItem.key === key){
@@ -108,12 +109,46 @@ class TodoList extends Component {
           return listItem;     
         }     
       return listItem;
+      })    
+      this.setState({
+        [listId] : newState
+      })
+    }
+  }
+
+  moveItem = (event) => {
+    let listId = event.target.title;
+    let key = parseInt(event.target.id);
+    let currentState = this.state[listId];
+    let addedItem = currentState.filter((listState)=>{
+      return listState.key === key
     })
+    let newState = currentState.filter((listState)=>{
+      return listState.key !== key
+    })
+
     this.setState({
       [listId] : newState
     })
+    console.log(addedItem);
+    if (listId==='weekList'){
+      this.setState({
+        todayList :[
+          ...addedItem,
+          ...this.state.todayList
+        ]
+      })
+    }else {
+      this.setState({
+        weekList :[
+          ...addedItem,
+          ...this.state.weekList
+        ]
+      })
     }
-    
+    console.log(...this.state.todayList);
+
+ 
   }
 
   render(){
@@ -126,18 +161,19 @@ class TodoList extends Component {
               keyValue={listItem.key} 
               content={listItem.content} 
               removeItem={this.removeItem}
-              quickLinks={<div className="quicklinks"><a href='#week'>Move to this week</a></div>}
+              quickLinks={<div className="quicklinks"><a title="allList" onClick={this.moveItem} id={listItem.key + 'MoveWeek'} href='#week'>Move to this week</a></div>}
               />
     }) 
     let weekItems = this.state.weekList.map((listItem) => {
       return <TodoItem 
               checkedToggle={this.checkedToggle} 
               checkedClass={listItem.isChecked ? 'fa-check-circle' : 'fa-circle'} 
-              id="weekList" key={listItem.key} 
+              id="weekList" 
+              key={listItem.key} 
               keyValue={listItem.key} 
               content={listItem.content} 
               removeItem={this.removeItem}
-              quickLinks={<div className="quicklinks"><a href='#today'>Move to today</a></div>}
+              quickLinks={<div className="quicklinks"><a title="weekList" onClick={this.moveItem} id={listItem.key + 'MoveToday'} href='#today'>Move to today</a></div>}
               />
     }) 
     let todayItems = this.state.todayList.map((listItem) => {
