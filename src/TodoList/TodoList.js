@@ -71,7 +71,7 @@ class TodoList extends Component {
   }
   
   removeItem = (event) => {
-    let listId = event.target.title;
+    let listId = event.target.attributes['data'].value;
     let key = parseInt(event.target.id);
     let currentState = this.state[listId];
     let newState = currentState.filter((listState)=>{
@@ -85,7 +85,7 @@ class TodoList extends Component {
   }
 
   checkedToggle = (event) => {
-    let listId = event.target.title;
+    let listId = event.target.attributes['data'].value;
     let key = parseInt(event.target.id);
     let currentState = this.state[listId];
 
@@ -117,7 +117,7 @@ class TodoList extends Component {
   }
 
   moveItem = (event) => {
-    let listId = event.target.title;
+    let listId = event.target.attributes['data'].value;
     let key = parseInt(event.target.id);
     let currentState = this.state[listId];
     let addedItem = currentState.filter((listState)=>{
@@ -161,7 +161,7 @@ class TodoList extends Component {
               keyValue={listItem.key} 
               content={listItem.content} 
               removeItem={this.removeItem}
-              quickLinks={<div className="quicklinks"><a title="allList" onClick={this.moveItem} id={listItem.key + 'MoveWeek'} href='#week'>Move to this week</a></div>}
+              quickLinks={<div className="quicklinks"><a data="allList" onClick={this.moveItem} id={listItem.key + 'MoveWeek'} href='#week'>Move to this week</a></div>}
               />
     }) 
     let weekItems = this.state.weekList.map((listItem) => {
@@ -173,7 +173,7 @@ class TodoList extends Component {
               keyValue={listItem.key} 
               content={listItem.content} 
               removeItem={this.removeItem}
-              quickLinks={<div className="quicklinks"><a title="weekList" onClick={this.moveItem} id={listItem.key + 'MoveToday'} href='#today'>Move to today</a></div>}
+              quickLinks={<div className="quicklinks"><a data="weekList" onClick={this.moveItem} id={listItem.key + 'MoveToday'} href='#today'>Move to today</a></div>}
               />
     }) 
     let todayItems = this.state.todayList.map((listItem) => {
