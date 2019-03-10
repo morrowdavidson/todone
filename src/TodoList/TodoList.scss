@@ -26,7 +26,16 @@
     cursor: pointer;
 };
 
-
+.to-do-item i {
+    padding-left:.5em;
+    display:none;
+}
+.to-do-item {
+    padding-left:.25em;
+}
+.list-group-item:hover i{
+    display: inline;
+}
 
 .fa-circle, .fa-check-circle {
     font-size: 1.75em;
@@ -59,5 +68,9 @@
 
 .quicklinks {
     margin-top: -8px;
+    display:none;
+    position: absolute;
 }
-
+.list-group-item:hover .quicklinks{
+    display:block;
+}
