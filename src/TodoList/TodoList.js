@@ -130,7 +130,6 @@ class TodoList extends Component {
     this.setState({
       [listId] : newState
     })
-    console.log(addedItem);
     if (listId==='weekList'){
       this.setState({
         todayList :[
@@ -146,9 +145,6 @@ class TodoList extends Component {
         ]
       })
     }
-    console.log(...this.state.todayList);
-
- 
   }
 
   render(){

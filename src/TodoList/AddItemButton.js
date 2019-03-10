@@ -13,7 +13,9 @@ const addItemButton = (props) => {
                     props.inputToggleHandler(event, "replay");
                     event.target.value = '';
                 }}} 
-                onBlur={props.inputToggleHandler} id={props.id + "InputField"} type="text" />
+                onBlur={props.inputToggleHandler} 
+                id={props.id + "InputField"} 
+                type="text" />
       </li>
   }
   else {
