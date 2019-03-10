@@ -13,14 +13,17 @@
 
 #todayList i, #todayList button, #todayList .add-task-button {
     color: $today;
+    cursor: pointer;
 };
 
 #weekList i, #weekList button, #weekList .add-task-button{
     color: $week;
+    cursor: pointer;
 };
 
 #allList i, #allList button, #allList .add-task-button{
     color: $all;
+    cursor: pointer;
 };
 
 
