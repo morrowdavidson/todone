@@ -11,24 +11,30 @@
     padding-left:60px;
 };
 
+.add-task-button span{
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    margin-left: .5em;
+
+}
+
 #todayList i, #todayList button, #todayList .add-task-button {
     color: $today;
-    cursor: pointer;
 };
 
 #weekList i, #weekList button, #weekList .add-task-button{
     color: $week;
-    cursor: pointer;
 };
 
 #allList i, #allList button, #allList .add-task-button{
     color: $all;
-    cursor: pointer;
 };
 
 .to-do-item i {
     padding-left:.5em;
     display:none;
+    cursor: pointer;
+
 }
 .to-do-item {
     padding-left:.25em;
@@ -42,6 +48,8 @@
     position: relative;
     top: .15em;
     left: -1.25em;
+    cursor: pointer;
+
 }
 .add-task-button button, .add-task-input button {
     padding: .5em;
@@ -57,7 +65,7 @@
     width: 75%;
 }
 
-.list-group-item span{
+.to-do-item{
     margin-left: -2em;
 }
 

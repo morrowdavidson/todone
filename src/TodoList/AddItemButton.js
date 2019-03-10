@@ -20,9 +20,8 @@ const addItemButton = (props) => {
   }
   else {
     buttonOrInput = 
-    <li onClick={props.inputToggleHandler} id={props.id + "Button"} className="list-group-item add-task-button">
-      <button className="fas fa-plus"></button>
-      {props.buttonLabel}
+    <li id={props.id + "Button"} className="list-group-item add-task-button">
+      <button onClick={props.inputToggleHandler} className="fas fa-plus"><span>{props.buttonLabel}</span></button>
     </li>
   }
   return (
