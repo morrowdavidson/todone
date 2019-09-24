@@ -1,0 +1,14 @@
+{
+  "main.css": "/todone/static/css/main.9f989f5e.chunk.css",
+  "main.js": "/todone/static/js/main.2b8075b7.chunk.js",
+  "main.js.map": "/todone/static/js/main.2b8075b7.chunk.js.map",
+  "runtime~main.js": "/todone/static/js/runtime~main.e60d8ae5.js",
+  "runtime~main.js.map": "/todone/static/js/runtime~main.e60d8ae5.js.map",
+  "static/js/2.609099d6.chunk.js": "/todone/static/js/2.609099d6.chunk.js",
+  "static/js/2.609099d6.chunk.js.map": "/todone/static/js/2.609099d6.chunk.js.map",
+  "index.html": "/todone/index.html",
+  "precache-manifest.440e5df701d193b5ba3450978bafdb44.js": "/todone/precache-manifest.440e5df701d193b5ba3450978bafdb44.js",
+  "service-worker.js": "/todone/service-worker.js",
+  "static/css/main.9f989f5e.chunk.css.map": "/todone/static/css/main.9f989f5e.chunk.css.map",
+  "static/media/Header.scss": "/todone/static/media/todone_logo.91e12a64.svg"
+}
