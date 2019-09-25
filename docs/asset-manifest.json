@@ -1,14 +1,14 @@
 {
-  "main.css": "/todone/static/css/main.77d20185.chunk.css",
-  "main.js": "/todone/static/js/main.e335ad2e.chunk.js",
-  "main.js.map": "/todone/static/js/main.e335ad2e.chunk.js.map",
-  "runtime~main.js": "/todone/static/js/runtime~main.e60d8ae5.js",
-  "runtime~main.js.map": "/todone/static/js/runtime~main.e60d8ae5.js.map",
-  "static/js/2.519d7ee8.chunk.js": "/todone/static/js/2.519d7ee8.chunk.js",
-  "static/js/2.519d7ee8.chunk.js.map": "/todone/static/js/2.519d7ee8.chunk.js.map",
-  "index.html": "/todone/index.html",
-  "precache-manifest.1edc52de0d4c9489e3550e3471530420.js": "/todone/precache-manifest.1edc52de0d4c9489e3550e3471530420.js",
-  "service-worker.js": "/todone/service-worker.js",
-  "static/css/main.77d20185.chunk.css.map": "/todone/static/css/main.77d20185.chunk.css.map",
-  "static/media/Header.scss": "/todone/static/media/todone_logo.91e12a64.svg"
+  "main.css": "./static/css/main.6282b55e.chunk.css",
+  "main.js": "./static/js/main.1359263e.chunk.js",
+  "main.js.map": "./static/js/main.1359263e.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.2c977d9b.js",
+  "runtime~main.js.map": "./static/js/runtime~main.2c977d9b.js.map",
+  "static/js/2.519d7ee8.chunk.js": "./static/js/2.519d7ee8.chunk.js",
+  "static/js/2.519d7ee8.chunk.js.map": "./static/js/2.519d7ee8.chunk.js.map",
+  "index.html": "./index.html",
+  "precache-manifest.972807ffee69348c53e002e17bf6e767.js": "./precache-manifest.972807ffee69348c53e002e17bf6e767.js",
+  "service-worker.js": "./service-worker.js",
+  "static/css/main.6282b55e.chunk.css.map": "./static/css/main.6282b55e.chunk.css.map",
+  "static/media/Header.scss": "./static/media/todone_logo.91e12a64.svg"
 }
