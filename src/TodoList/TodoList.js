@@ -47,6 +47,7 @@ class TodoList extends Component {
       let currentState = this.state[listId];
 
       this.setState({
+
         keyCounter : ++currentKeyCount,
         enteringInput : false,
         [listId] : [
@@ -82,6 +83,11 @@ class TodoList extends Component {
 
   }
 
+  editItem = (listId, key) => {
+    console.log(listId);
+    console.log(key);
+  }
+
   checkedToggle = (event, key, listId) => {
     let currentState = this.state[listId];
 
@@ -112,7 +118,7 @@ class TodoList extends Component {
     }
   }
 
-  moveItem = (key, listId) => {
+  moveItem = (key, listId, moveTo) => {
     let currentState = this.state[listId];
     let addedItem = currentState.filter((listState)=>{
       return listState.key === key
@@ -124,18 +130,26 @@ class TodoList extends Component {
     this.setState({
       [listId] : newState
     })
-    if (listId==='weekList'){
+    if (moveTo==='todayList'){
       this.setState({
         todayList :[
           ...addedItem,
           ...this.state.todayList
         ]
       })
-    }else {
+    }else if (moveTo==='weekList') {
       this.setState({
         weekList :[
           ...addedItem,
           ...this.state.weekList
+        ]
+      })
+    }
+    else {
+      this.setState({
+        allList :[
+          ...addedItem,
+          ...this.state.allList
         ]
       })
     }
@@ -150,7 +164,7 @@ class TodoList extends Component {
               key={listItem.key} 
               content={listItem.content} 
               removeItem={() => this.removeItem("allList", listItem.key)}
-              quickLinks={<div className="quicklinks"><a onClick={() => {this.moveItem(listItem.key, "allList")}} id={listItem.key + 'MoveWeek'} href='#week'>Move to this week</a></div>}
+              quickLinks={<div className="quicklinks"><a onClick={() => {this.moveItem(listItem.key, "allList","weekList")}} id={listItem.key + 'MoveWeek'} href='#week'>Move to this week</a></div>}
               />
     }) 
     let weekItems = this.state.weekList.map((listItem) => {
@@ -161,7 +175,7 @@ class TodoList extends Component {
               key={listItem.key} 
               content={listItem.content} 
               removeItem={() => this.removeItem("weekList", listItem.key)}
-              quickLinks={<div className="quicklinks"><a onClick={() => {this.moveItem(listItem.key, "weekList")}} id={listItem.key + 'MoveToday'} href='#today'>Move to today</a></div>}
+              quickLinks={<div className="quicklinks"><a onClick={() => {this.moveItem(listItem.key, "weekList","todayList")}} id={listItem.key + 'MoveToday'} href='#today'>Move to today</a> | <a onClick={() => {this.moveItem(listItem.key, "weekList","allList")}} id={listItem.key + 'MoveAll'} href='#all'>Move to all tasks</a></div>}
               />
     }) 
     let todayItems = this.state.todayList.map((listItem) => {
@@ -172,6 +186,8 @@ class TodoList extends Component {
               key={listItem.key} 
               content={listItem.content} 
               removeItem={() => this.removeItem("todayList", listItem.key)}
+              quickLinks={<div className="quicklinks"><a onClick={() => {this.moveItem(listItem.key, "todayList", "weekList")}} id={listItem.key + 'MoveWeek'} href='#week'>Move to this week</a></div>}
+
               />
     }) 
     
